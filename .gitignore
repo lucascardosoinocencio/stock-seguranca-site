@@ -1,5 +1,6 @@
 node_modules/
 tools/screenshots/
+.claude/
 
 # arquivos gerados pelos scripts de tools/ — reproduzíveis, não precisam
 # ficar versionados (o bundle de preview em especial passa de 9MB)
