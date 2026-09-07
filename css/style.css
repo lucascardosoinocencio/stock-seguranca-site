@@ -385,6 +385,11 @@ body {
   filter: drop-shadow(0 8px 18px rgba(0,0,0,.6));
 }
 .brand-plate-inner img { width: auto; height: 100%; max-width: 100%; object-fit: contain; }
+/* Intelbras e Nice têm bastante espaço vazio ao redor do símbolo dentro
+   do próprio arquivo — aumentamos só a imagem, a placa continua do
+   mesmo tamanho (overflow:hidden no .brand-plate contém o crescimento). */
+.brand-plate-inner img[alt="Intelbras"],
+.brand-plate-inner img[alt="Nice"] { height: 150%; }
 
 /* =========================================================
    TILT 3D + GLARE — "saindo da tela" ao passar o mouse.
