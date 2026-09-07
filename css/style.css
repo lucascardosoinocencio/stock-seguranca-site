@@ -805,7 +805,7 @@ body {
   .video-grid .feed-media { max-height: none; }
   .product-grid { grid-template-columns: 1fr 1fr; }
   .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; }
-  .footer-bottom { flex-direction: row; justify-content: space-between; }
+  .footer-bottom { flex-direction: row; justify-content: space-between; padding-right: 84px; }
 }
 
 /* =========================================================
