@@ -27,9 +27,12 @@ const jobs = [
   { file: 'concertina 2.jpeg', slug: 'concertina-2', widths: [800, 480] },
   { file: 'motor nice 1.jpg', slug: 'motor-nice-deslizante', widths: [800, 480] },
   { file: 'motor nice basculante.webp', slug: 'motor-nice-basculante', widths: [800, 480] },
+  { file: 'motor nice pivotante.webp', slug: 'motor-nice-pivotante', widths: [800, 480] },
   { file: 'video porteiro - intelbras.jpg', slug: 'video-porteiro-intelbras', widths: [800, 480] },
   { file: 'video-porteiro-hikvision.jpg', slug: 'video-porteiro-hikvision', widths: [800, 480] },
-  { file: 'central monitoramento.jpg', slug: 'central-monitoramento', widths: [1100, 700] },
+  { file: 'review google edimar jr.png', slug: 'review-edimar-jr', widths: [640], quality: 95 },
+  { file: 'review google coletivo fomento literario.png', slug: 'review-coletivo-fomento-literario', widths: [640], quality: 95 },
+  { file: 'review google ana paula lima.png', slug: 'review-ana-paula-lima', widths: [640], quality: 95 },
 ];
 
 async function run() {
@@ -47,7 +50,7 @@ async function run() {
       const outPath = path.join(OUT, `${job.slug}-${w}.webp`);
       await base()
         .resize({ width: targetW, withoutEnlargement: true })
-        .webp({ quality: 82 })
+        .webp({ quality: job.quality || 82 })
         .toFile(outPath);
       const size = fs.statSync(outPath).size;
       console.log(`${job.slug}-${w}.webp`, `${(size / 1024).toFixed(0)}KB`, `(orig ${meta.width}x${meta.height})`);

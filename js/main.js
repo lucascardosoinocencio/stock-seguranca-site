@@ -3,15 +3,6 @@
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- hero visual: só carrega a imagem quando a coluna
-     direita realmente aparece (>=1140px) — em telas menores o CSS
-     esconde o elemento, mas o navegador baixaria a imagem do mesmo
-     jeito se ela estivesse num <img src> normal ---------- */
-  const heroVisualImg = document.querySelector('.hero-visual img[data-src]');
-  if (heroVisualImg && window.matchMedia('(min-width: 1140px)').matches) {
-    heroVisualImg.src = heroVisualImg.dataset.src;
-  }
-
   /* ---------- year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -32,12 +23,14 @@
   const mobileNav = document.getElementById('mobileNav');
   const closeMobileNav = () => {
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.setAttribute('aria-label', 'Abrir menu');
     mobileNav.classList.remove('is-open');
     document.body.style.overflow = '';
   };
   navToggle.addEventListener('click', () => {
     const open = navToggle.getAttribute('aria-expanded') === 'true';
     navToggle.setAttribute('aria-expanded', String(!open));
+    navToggle.setAttribute('aria-label', open ? 'Abrir menu' : 'Fechar menu');
     mobileNav.classList.toggle('is-open', !open);
     document.body.style.overflow = open ? '' : 'hidden';
   });
@@ -97,19 +90,6 @@
         el.style.setProperty('--glare-o', '0');
       });
     });
-
-    document.querySelectorAll('[data-tilt-soft]').forEach((wrap) => {
-      const frame = wrap.querySelector('.hero-visual-frame');
-      if (!frame) return;
-      const strength = 5;
-      wrap.addEventListener('mousemove', (e) => {
-        const rect = wrap.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width - 0.5;
-        const py = (e.clientY - rect.top) / rect.height - 0.5;
-        frame.style.transform = `perspective(1400px) rotateY(${-7 + px * strength}deg) rotateX(${2 - py * strength}deg)`;
-      });
-      wrap.addEventListener('mouseleave', () => { frame.style.transform = ''; });
-    });
   }
 
   /* ---------- video feed cards: click to play ---------- */
@@ -162,21 +142,33 @@
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
+  let lightboxTrigger = null;
   document.querySelectorAll('[data-lightbox]').forEach((btn) => {
     btn.addEventListener('click', () => {
+      lightboxTrigger = btn;
       lightboxImg.src = btn.dataset.lightbox;
       lightboxImg.alt = btn.querySelector('img')?.alt || '';
       lightbox.classList.add('is-open');
       document.body.style.overflow = 'hidden';
+      lightboxClose.focus();
     });
   });
   const closeLightbox = () => {
     lightbox.classList.remove('is-open');
     lightboxImg.src = '';
     document.body.style.overflow = '';
+    lightboxTrigger?.focus();
   };
   lightboxClose.addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  /* trap focus: única coisa focável dentro é o botão fechar, então Tab
+     sempre volta pra ele em vez de escapar pro conteúdo atrás do overlay */
+  lightbox.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      lightboxClose.focus();
+    }
+  });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
   /* ---------- radar sweep (canvas) ----------

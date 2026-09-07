@@ -87,13 +87,14 @@ Depois é só abrir `http://localhost:8080` (ou a porta que o servidor indicar).
 
 | Seção | O que tem |
 |---|---|
-| **Hero** | Chamada principal + visual da central de monitoramento com tilt 3D no mouse |
+| **Hero** | Chamada principal com CTA de orçamento pelo WhatsApp |
 | **Serviços** | Visão geral rápida das 4 categorias (CFTV, acesso, alarme/cerca, portão/fechadura) |
 | **Marcas parceiras** | Intelbras, Hikvision e Nice em placas com efeito 3D + brilho no hover |
 | **Perfil do responsável** | Crachá de acesso (ID badge) com efeito 3D, no lugar de uma foto genérica |
 | **Trabalhos em campo** | 3 vídeos reais de instalação (não estoque) + galeria de fotos |
-| **Catálogo por marca** | 13 produtos filtráveis por marca (Intelbras, Hikvision, Nice, outras) |
+| **Catálogo por marca** | 17 produtos filtráveis por marca (Intelbras, Hikvision, Nice, outras) |
 | **Área de atendimento** | Radar (canvas) mostrando Americana e as 4 cidades vizinhas atendidas |
+| **Depoimentos** | Capturas reais de avaliações do Google (nome, nota, comentário) + nota geral |
 | **CTA + rodapé** | Reforço do WhatsApp, links rápidos, crédito do desenvolvedor |
 
 O botão de WhatsApp aparece fixo (flutuante) durante toda a navegação, além de estar no
