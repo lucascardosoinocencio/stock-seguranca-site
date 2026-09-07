@@ -33,6 +33,7 @@ const jobs = [
   { file: 'review google edimar jr.png', slug: 'review-edimar-jr', widths: [640], quality: 95 },
   { file: 'review google coletivo fomento literario.png', slug: 'review-coletivo-fomento-literario', widths: [640], quality: 95 },
   { file: 'review google ana paula lima.png', slug: 'review-ana-paula-lima', widths: [640], quality: 95 },
+  { file: 'logo-hex.png', slug: 'logo-lucaslabs-hex', widths: [200], quality: 95 },
 ];
 
 async function run() {
