@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    background: #0a1626;
+    font-family: 'Manrope', -apple-system, 'Segoe UI', sans-serif;
+    color: #edf1f5;
+  }
+  .grid {
+    position: absolute; inset: -1px;
+    background-image:
+      linear-gradient(rgba(185,196,209,.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(185,196,209,.09) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(ellipse 70% 70% at 30% 40%, #000 40%, transparent 85%);
+  }
+  .vignette {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 55% 65% at 20% 35%, rgba(79,195,255,.16), transparent 60%),
+      linear-gradient(100deg, #060d18 0%, #0a1626 55%, #0a1626 100%);
+  }
+  .corner { position: absolute; width: 34px; height: 34px; z-index: 3; }
+  .corner--tl { top: 40px; left: 40px; border-top: 3px solid rgba(237,241,245,.55); border-left: 3px solid rgba(237,241,245,.55); }
+  .corner--br { bottom: 40px; right: 40px; border-bottom: 3px solid rgba(237,241,245,.55); border-right: 3px solid rgba(237,241,245,.55); }
+  .rec {
+    position: absolute; top: 40px; right: 40px; z-index: 3;
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 600;
+    letter-spacing: .1em; color: #ff6b6b;
+    background: rgba(6,13,24,.6); padding: 8px 14px; border-radius: 6px;
+    border: 1px solid rgba(255,255,255,.12);
+  }
+  .rec-dot { width: 8px; height: 8px; border-radius: 50%; background: #ff4444; box-shadow: 0 0 8px 1px #ff4444; }
+  .content { position: relative; z-index: 2; padding: 76px 80px; }
+  .brand { display: flex; align-items: center; gap: 16px; margin-bottom: 56px; }
+  .brand img { height: 56px; width: auto; filter: drop-shadow(0 2px 10px rgba(0,0,0,.5)); }
+  .brand-word { font-family: 'Big Shoulders', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: .02em; text-transform: uppercase; }
+  .brand-word em { font-style: normal; color: #4fc3ff; font-weight: 600; }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 16px; letter-spacing: .12em;
+    color: #4fc3ff; text-transform: uppercase; margin-bottom: 22px;
+  }
+  h1 {
+    font-family: 'Big Shoulders', sans-serif; font-weight: 900; text-transform: uppercase;
+    font-size: 72px; line-height: .98; letter-spacing: .005em; max-width: 800px;
+  }
+  h1 .hl { color: #4fc3ff; }
+  .sub {
+    margin-top: 26px; max-width: 640px; font-size: 21px; line-height: 1.5; color: #aebac6;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="vignette"></div>
+  <span class="corner corner--tl"></span>
+  <span class="corner corner--br"></span>
+  <span class="rec"><span class="rec-dot"></span>AMERICANA/SP</span>
+  <div class="content">
+    <div class="brand">
+      <img src="../assets/optimized/images/logo-stock-seguranca-900.webp" alt="">
+      <span class="brand-word">STOCK <em>SEGURANÇA</em></span>
+    </div>
+    <p class="eyebrow">CFTV · ALARME · CONTROLE DE ACESSO · CERCA ELÉTRICA</p>
+    <h1>SUA CASA, SUA EMPRESA <span class="hl">PROTEGIDAS DE VERDADE.</span></h1>
+    <p class="sub">Instalação técnica de segurança eletrônica em Americana/SP e região. Orçamento direto pelo WhatsApp.</p>
+  </div>
+</body>
+</html>

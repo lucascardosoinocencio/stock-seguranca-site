@@ -143,6 +143,7 @@
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
   let lightboxTrigger = null;
+  if (lightbox && lightboxImg && lightboxClose) {
   document.querySelectorAll('[data-lightbox]').forEach((btn) => {
     btn.addEventListener('click', () => {
       lightboxTrigger = btn;
@@ -170,6 +171,7 @@
     }
   });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  }
 
   /* ---------- radar sweep (canvas) ----------
      Desenhado em canvas em vez de CSS: o pivô é fixado via
@@ -238,5 +240,71 @@
       };
       requestAnimationFrame(tick);
     }
+  }
+
+  /* ---------- contador de visitas: contagem real vinda de /api/visits,
+     mostrador estilo LED com dígitos rolando (odômetro) ---------- */
+  const visitCounter = document.querySelector('[data-visit-counter]');
+  const visitDigits = document.querySelector('[data-visit-counter-digits]');
+  if (visitCounter && visitDigits) {
+    const buildOdometer = (numberStr) => {
+      visitDigits.innerHTML = '';
+      const columns = [];
+      for (const ch of numberStr) {
+        if (ch < '0' || ch > '9') {
+          const staticEl = document.createElement('span');
+          staticEl.className = 'odometer-col is-static';
+          staticEl.textContent = ch;
+          visitDigits.appendChild(staticEl);
+          continue;
+        }
+        const col = document.createElement('span');
+        col.className = 'odometer-col';
+        const strip = document.createElement('span');
+        strip.className = 'odometer-strip';
+        for (let d = 0; d <= 9; d++) {
+          const digitSpan = document.createElement('span');
+          digitSpan.textContent = String(d);
+          strip.appendChild(digitSpan);
+        }
+        col.appendChild(strip);
+        visitDigits.appendChild(col);
+        columns.push({ strip, target: Number(ch) });
+      }
+      return columns;
+    };
+
+    fetch('/api/visits', { cache: 'no-store' })
+      .then((res) => {
+        if (!res.ok) throw new Error('bad response');
+        return res.json();
+      })
+      .then((data) => {
+        const value = data && typeof data.value === 'number' ? data.value : null;
+        if (value === null) throw new Error('no value');
+
+        const columns = buildOdometer(value.toLocaleString('pt-BR'));
+        visitCounter.classList.add('is-visible');
+
+        if (typeof window.anime === 'function' && !reducedMotion) {
+          columns.forEach(({ strip, target }, i) => {
+            window.anime({
+              targets: strip,
+              translateY: ['0%', `-${target * 10}%`],
+              duration: 900,
+              delay: 200 + i * 90,
+              easing: 'easeOutExpo',
+            });
+          });
+        } else {
+          columns.forEach(({ strip, target }) => {
+            strip.style.transform = `translateY(-${target * 10}%)`;
+          });
+        }
+      })
+      .catch(() => {
+        // Serviço de contagem indisponível: esconde o contador em vez de mostrar número falso ou travado.
+        visitCounter.remove();
+      });
   }
 })();

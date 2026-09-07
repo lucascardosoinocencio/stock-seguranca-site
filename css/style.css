@@ -377,11 +377,10 @@ body {
   border-color: rgba(79,195,255,.55);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 34px 60px -20px rgba(79,195,255,.4), 0 10px 24px -8px rgba(0,0,0,.6);
 }
-/* logos direto sobre a placa escura, sem caixa branca — normalizados
-   por uma altura generosa (mais "maiores" como pedido); a Hikvision usa
+/* logos direto sobre a placa escura, sem caixa branca — a Hikvision usa
    o arquivo com fundo removido pra não sobrar retângulo branco nenhum */
 .brand-plate-inner {
-  width: 100%; height: 108px;
+  width: 100%; height: 64px;
   display: flex; align-items: center; justify-content: center;
   filter: drop-shadow(0 8px 18px rgba(0,0,0,.6));
 }
@@ -693,6 +692,7 @@ body {
   font-size: .74rem; color: var(--chrome-dim);
 }
 .footer-legal { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5em; }
+.footer-meta { display: flex; align-items: center; gap: .9rem; }
 .footer-credit-sep { opacity: .5; }
 .footer-credit {
   display: inline-flex; align-items: center; gap: .4em;
@@ -702,6 +702,29 @@ body {
 }
 .footer-credit svg { color: #0a66c2; flex: none; }
 .footer-credit:hover { color: var(--paper); border-color: rgba(185,196,209,.4); }
+
+/* =========================================================
+   CONTADOR DE VISITAS — mostrador LED, dígitos em odômetro
+   ========================================================= */
+.visit-counter {
+  display: none;
+  border: 2px solid rgba(79,195,255,.5);
+  border-radius: 6px;
+  background: #000;
+  padding: .45em .8em;
+  box-shadow: 0 0 18px -3px rgba(79,195,255,.6);
+}
+.visit-counter.is-visible { display: inline-flex; }
+.visit-counter-digits { font-family: var(--mono); font-size: 1rem; font-weight: 700; letter-spacing: .08em; display: flex; }
+.odometer-col {
+  vertical-align: top; height: 1em;
+  color: var(--ice);
+  text-shadow: 0 0 6px rgba(79,195,255,.9), 0 0 16px rgba(79,195,255,.55);
+  line-height: 1; display: inline-block; overflow: hidden;
+}
+.odometer-col.is-static { line-height: normal; }
+.odometer-strip { flex-direction: column; display: flex; }
+.odometer-strip span { height: 1em; line-height: 1; }
 
 /* =========================================================
    FLOATING WHATSAPP
@@ -727,6 +750,30 @@ body {
   0% { transform: scale(1); opacity: .55; }
   100% { transform: scale(1.9); opacity: 0; }
 }
+
+/* =========================================================
+   LEGAL (política de privacidade)
+   ========================================================= */
+.legal { padding-top: 9rem; padding-bottom: clamp(3rem, 6vw, 6rem); }
+.legal-inner { max-width: 760px; }
+.legal-title {
+  font-family: var(--display); font-weight: 900; text-transform: uppercase;
+  font-size: clamp(2.2rem, 1.6rem + 2.6vw, 3.4rem); line-height: 1; letter-spacing: .005em;
+  color: var(--paper); margin-bottom: 2rem; text-wrap: balance;
+}
+.legal-body { color: var(--paper-dim); font-size: 1rem; }
+.legal-body p { margin-bottom: 1.2em; text-wrap: pretty; }
+.legal-body h2 {
+  font-family: var(--display); font-weight: 800; text-transform: uppercase;
+  font-size: 1.3rem; letter-spacing: .01em; color: var(--paper);
+  margin: 2.2em 0 .7em;
+}
+.legal-body ul { margin: 0 0 1.2em; padding-left: 1.3em; list-style: disc; }
+.legal-body li { margin-bottom: .5em; }
+.legal-body a { color: var(--ice); text-decoration: underline; text-underline-offset: .2em; }
+.legal-body a:hover { color: var(--paper); }
+.legal-body strong { color: var(--paper); }
+.legal-back { margin-top: 3rem; }
 
 /* =========================================================
    LIGHTBOX
