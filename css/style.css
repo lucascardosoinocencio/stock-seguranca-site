@@ -239,34 +239,9 @@ body {
 .hero-vignette {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 50% at 50% 20%, rgba(79,195,255,.10), transparent 60%),
-              linear-gradient(180deg, transparent 40%, var(--bg) 100%);
+              linear-gradient(180deg, transparent 40%, var(--bg) 100%),
+              linear-gradient(90deg, var(--void) 0%, rgba(6,13,24,.88) 32%, rgba(6,13,24,.35) 58%, transparent 78%);
 }
-
-/* órbitas: anéis concêntricos + pontos à deriva, ecoam o motivo de
-   radar/varredura já usado no resto do site (referência: aether1.ai) */
-.hero-orbits {
-  position: absolute; right: 4%; top: 50%; translate: 0 -50%;
-  width: min(64vw, 900px); aspect-ratio: 1; z-index: 0;
-  display: none;
-}
-.orbit-ring {
-  position: absolute; inset: 0; margin: auto; border-radius: 50%;
-  border: 1px solid rgba(79,195,255,.16);
-}
-.orbit-ring--1 { width: 32%; height: 32%; border-color: rgba(79,195,255,.24); }
-.orbit-ring--2 { width: 58%; height: 58%; }
-.orbit-ring--3 { width: 84%; height: 84%; border-color: rgba(79,195,255,.10); }
-.orbit-dot {
-  position: absolute; width: 6px; height: 6px; border-radius: 50%;
-  background: var(--ice); box-shadow: 0 0 8px 1px rgba(79,195,255,.8);
-  animation: orbit-spin linear infinite;
-}
-.orbit-dot--1 { top: 8%; left: 50%; transform-origin: 0 46vw; animation-duration: 22s; }
-.orbit-dot--2 { top: 21%; left: 50%; transform-origin: 0 33.5vw; animation-duration: 16s; animation-direction: reverse; }
-.orbit-dot--3 { top: 42%; left: 50%; transform-origin: 0 12.5vw; animation-duration: 10s; }
-@keyframes orbit-spin { to { transform: rotate(360deg); } }
-@media (prefers-reduced-motion: reduce) { .orbit-dot { animation: none; } }
-@media (min-width: 1140px) { .hero-orbits { display: block; } }
 
 .hero-inner {
   position: relative; z-index: 1;

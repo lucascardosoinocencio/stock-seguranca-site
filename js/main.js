@@ -92,6 +92,23 @@
     });
   }
 
+  /* ---------- vídeo de fundo do hero: só baixa/toca em conexão boa ----------
+     poster estático fica visível por padrão (preload="none"); só troca
+     pra vídeo real se não for reduced-motion nem conexão ruim (Save-Data,
+     2G/3G) — em internet ruim ou mobile lento, fica só na imagem. */
+  const heroVideo = document.getElementById('heroBgVideo');
+  if (heroVideo) {
+    const source = heroVideo.querySelector('source');
+    const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const isSlowConn = !!(conn && (conn.saveData || ['slow-2g', '2g', '3g'].includes(conn.effectiveType)));
+    if (source && !reducedMotion && !isSlowConn) {
+      const isNarrow = window.matchMedia('(max-width: 767px)').matches;
+      source.src = isNarrow ? source.dataset.srcMobile : source.dataset.src;
+      heroVideo.load();
+      heroVideo.play().catch(() => {});
+    }
+  }
+
   /* ---------- video feed cards: click to play ---------- */
   document.querySelectorAll('[data-video]').forEach((card) => {
     const video = card.querySelector('video');
