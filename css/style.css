@@ -300,7 +300,7 @@ body {
 @media (max-width: 560px) {
   .hero-stats { grid-template-columns: repeat(2, auto); }
 }
-.hero-stats dt { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; color: var(--chrome-dim); text-transform: uppercase; }
+.hero-stats dt { font-family: var(--mono); font-size: .72rem; letter-spacing: .1em; color: var(--chrome-dim); text-transform: uppercase; }
 .hero-stats dd { margin: .5rem 0 0; font-weight: 700; color: var(--paper); font-size: .95rem; }
 
 .stat-logos { display: flex; align-items: center; gap: .6rem; }
@@ -325,7 +325,7 @@ body {
 .google-rating svg { color: var(--star); flex: none; }
 .google-rating:hover { color: var(--ice); }
 .google-rating .rating-count {
-  font-family: var(--mono); font-weight: 500; font-size: .68rem;
+  font-family: var(--mono); font-weight: 500; font-size: .72rem;
   letter-spacing: .03em; color: var(--chrome-dim); text-transform: none;
 }
 
@@ -466,8 +466,8 @@ body {
   border-radius: 10px 10px 0 0;
 }
 .id-badge-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.4rem; }
-.id-tag { font-size: .62rem; color: var(--chrome-dim); letter-spacing: .1em; }
-.rec { display: inline-flex; align-items: center; gap: .4em; font-family: var(--mono); font-size: .65rem; letter-spacing: .08em; color: var(--rec); }
+.id-tag { font-size: .72rem; color: var(--chrome-dim); letter-spacing: .1em; }
+.rec { display: inline-flex; align-items: center; gap: .4em; font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; color: var(--rec); }
 .rec-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rec); box-shadow: 0 0 8px 1px var(--rec); animation: pulse-dot 1.6s ease-in-out infinite; }
 
 .id-badge-mark {
@@ -481,7 +481,7 @@ body {
 
 .id-badge-fields { border-top: 1px dashed rgba(185,196,209,.25); padding-top: 1.1rem; display: grid; gap: .7rem; }
 .id-badge-fields div { display: flex; justify-content: space-between; gap: 1rem; font-size: .8rem; }
-.id-badge-fields span { color: var(--chrome-dim); font-size: .62rem; letter-spacing: .08em; }
+.id-badge-fields span { color: var(--chrome-dim); font-size: .72rem; letter-spacing: .08em; }
 .id-badge-fields strong { color: var(--paper); font-weight: 600; text-align: right; }
 
 .id-badge-stripe {
@@ -534,11 +534,11 @@ body {
 .feed-label {
   display: flex; align-items: center; justify-content: space-between;
   padding: .8rem 1rem;
-  font-size: .68rem;
+  font-size: .72rem;
 }
 .feed-label .mono { color: var(--chrome); letter-spacing: .1em; }
 .feed-label .tag {
-  font-family: var(--mono); font-size: .62rem; letter-spacing: .07em; color: var(--ice-dim);
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .07em; color: var(--ice-dim);
   background: rgba(79,195,255,.08); padding: .3em .6em; border-radius: 4px; color: var(--ice);
 }
 
@@ -568,7 +568,7 @@ body {
 .feed-card.is-playing .play-btn { opacity: 0; transform: scale(.85); pointer-events: none; }
 
 .mini-gallery { margin-top: 2.6rem; }
-.mini-gallery-label { display: block; color: var(--chrome-dim); font-size: .65rem; letter-spacing: .1em; margin-bottom: .9rem; }
+.mini-gallery-label { display: block; color: var(--chrome-dim); font-size: .72rem; letter-spacing: .1em; margin-bottom: .9rem; }
 .mini-gallery-row { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; max-width: 480px; }
 @media (min-width: 640px) {
   .mini-gallery-row { grid-template-columns: repeat(4, 1fr); max-width: 100%; }
@@ -632,11 +632,11 @@ body {
 .radar-tags { position: absolute; inset: 0; }
 .radar-tag {
   position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
-  font-family: var(--mono); font-size: .62rem; letter-spacing: .04em; white-space: nowrap;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; white-space: nowrap;
   color: var(--paper); background: rgba(10,22,38,.85); border: 1px solid rgba(185,196,209,.25);
   padding: .35em .6em; border-radius: 999px;
 }
-.radar-coord { position: absolute; bottom: -2.2rem; left: 50%; transform: translateX(-50%); color: var(--chrome-dim); font-size: .68rem; white-space: nowrap; }
+.radar-coord { position: absolute; bottom: -2.2rem; left: 50%; transform: translateX(-50%); color: var(--chrome-dim); font-size: .72rem; white-space: nowrap; }
 
 /* =========================================================
    DEPOIMENTOS

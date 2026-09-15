@@ -1,0 +1,35 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-09-15T01:45:23.776Z",
+        "reason": "hero .hl accent gradient, intentional brand highlight, established across session with user approval"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-09-15T01:45:41.318Z",
+        "reason": "ice/red glow = core brand radar/REC visual language, deliberate across whole session with user approval"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T01:45:41.522Z",
+        "reason": "same, inline styles mirror css tokens"
+      }
+    ]
+  }
+}
