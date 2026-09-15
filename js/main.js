@@ -102,7 +102,6 @@
       if (!video.getAttribute('src') && video.querySelector('source')) {
         video.load();
       }
-      video.muted = false;
       video.play().catch(() => {});
       card.classList.add('is-playing');
     };
