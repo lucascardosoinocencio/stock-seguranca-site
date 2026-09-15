@@ -29,6 +29,24 @@
         ],
         "createdAt": "2026-09-15T01:45:41.522Z",
         "reason": "same, inline styles mirror css tokens"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-15T01:46:18.022Z",
+        "reason": "short uppercase mono labels (eyebrow, tags, CAM XX) — exact exemption the rule itself states"
+      },
+      {
+        "rule": "wide-tracking",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-09-15T01:46:18.306Z",
+        "reason": "same, css source for the mono labels"
       }
     ]
   }
