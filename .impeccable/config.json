@@ -47,6 +47,33 @@
         ],
         "createdAt": "2026-09-15T01:46:18.306Z",
         "reason": "same, css source for the mono labels"
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "politica-de-privacidade.html"
+        ],
+        "createdAt": "2026-09-16T00:49:15.313Z",
+        "reason": "same ice/red brand glow as index.html, shared css/style.css"
+      },
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "politica-de-privacidade.html"
+        ],
+        "createdAt": "2026-09-16T00:49:15.482Z",
+        "reason": "same shared hero .hl accent gradient class"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "politica-de-privacidade.html"
+        ],
+        "createdAt": "2026-09-16T00:49:15.680Z",
+        "reason": "same intentional grain/scanline overlay pattern as index.html"
       }
     ]
   }
