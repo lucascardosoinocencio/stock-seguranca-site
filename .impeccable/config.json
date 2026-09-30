@@ -74,6 +74,60 @@
         ],
         "createdAt": "2026-09-16T00:49:15.680Z",
         "reason": "same intentional grain/scanline overlay pattern as index.html"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:05.674Z",
+        "reason": "lightbox #lightboxImg is a placeholder filled by JS when an image is opened; empty src by design, not a broken tag"
+      },
+      {
+        "rule": "clipped-overflow-container",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:05.853Z",
+        "reason": "body { overflow-x: hidden } prevents horizontal scroll from full-bleed hero decoration; no tooltip/menu relies on escaping it"
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:06.033Z",
+        "reason": "literal ID-badge/cracha layout (role label above name), not a generic AI kicker pattern"
+      },
+      {
+        "rule": "pulsing-dot",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:06.208Z",
+        "reason": "scroll-cue affordance and CFTV feed REC/ATIVO indicators are literal domain-appropriate metaphors for a security-camera business, not simulated live data"
+      },
+      {
+        "rule": "marquee",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:06.385Z",
+        "reason": "ambient radar-style light sweep on hero background, decorative atmosphere fitting a security/surveillance brand, not scrolling content"
+      },
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-30T00:31:51.837Z",
+        "reason": "both flagged spans are short .eyebrow kicker labels (a bracket-tagged keyword list above the hero h1, and a short CTA tag above the final heading), not body paragraphs"
       }
     ]
   }

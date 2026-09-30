@@ -149,7 +149,7 @@ body {
 .site-header {
   position: fixed; inset-inline: 0; top: 0; z-index: 500;
   padding-block: 1.1rem;
-  transition: padding .3s var(--ease), background .3s var(--ease), backdrop-filter .3s var(--ease), border-color .3s var(--ease);
+  transition: background .3s var(--ease), backdrop-filter .3s var(--ease), border-color .3s var(--ease);
   border-bottom: 1px solid transparent;
 }
 .site-header.is-scrolled {
@@ -258,8 +258,7 @@ body {
   color: var(--paper);
 }
 .hero-title .hl {
-  background: linear-gradient(95deg, var(--ice), #a6e6ff 45%, var(--chrome));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
+  color: var(--ice);
 }
 .hero-sub {
   margin-top: 1.6rem;
@@ -456,7 +455,7 @@ body {
   filter: drop-shadow(0 4px 10px rgba(0,0,0,.6));
 }
 .id-badge-name { text-align: center; margin-bottom: 1.4rem; }
-.id-label { display: block; font-size: .6rem; color: var(--chrome-dim); letter-spacing: .12em; margin-bottom: .4rem; }
+.id-label { display: block; font-size: .7rem; color: var(--chrome-dim); letter-spacing: .12em; margin-bottom: .4rem; }
 .id-badge-name h3 { font-family: var(--display); font-size: 1.7rem; letter-spacing: .03em; color: var(--paper); }
 .id-role { display: block; margin-top: .3rem; font-size: .85rem; color: var(--ice); font-weight: 600; }
 
@@ -593,7 +592,7 @@ body {
 .coverage-list li { display: flex; align-items: center; gap: .7rem; font-weight: 600; }
 .coverage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--chrome-dim); flex: none; }
 .coverage-dot--base { background: var(--ice); box-shadow: 0 0 8px 1px var(--ice); }
-.tag-base { font-size: .6rem; color: var(--ice); border: 1px solid var(--ice-dim); padding: .15em .5em; border-radius: 4px; margin-left: .3em; }
+.tag-base { font-size: .7rem; color: var(--ice); border: 1px solid var(--ice-dim); padding: .15em .5em; border-radius: 4px; margin-left: .3em; }
 
 .radar { position: relative; aspect-ratio: 1; width: min(420px, 100%); margin-inline: auto; }
 .radar-rings { position: absolute; inset: 0; border-radius: 50%; }
