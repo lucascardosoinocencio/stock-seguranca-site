@@ -58,6 +58,25 @@
     });
   }
 
+  /* ---------- divisórias de seção ---------- */
+  const sectionEls = document.querySelectorAll('main > section:not(.hero)');
+  if (reducedMotion || !('IntersectionObserver' in window)) {
+    sectionEls.forEach((el) => el.classList.add('is-in'));
+  } else {
+    const sectionIo = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            sectionIo.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+    sectionEls.forEach((el) => sectionIo.observe(el));
+  }
+
   /* ---------- tilt 3D + brilho: placas de marca e crachá ----------
      "sai da tela" ao passar o mouse: inclina em perspectiva, levanta
      (translateZ + leve scale) e um brilho radial acompanha o cursor. */
@@ -187,75 +206,6 @@
     }
   });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-  }
-
-  /* ---------- radar sweep (canvas) ----------
-     Desenhado em canvas em vez de CSS: o pivô é fixado via
-     ctx.translate(centro) antes de ctx.rotate() a cada frame, então o
-     feixe nunca desliza nem muda de tamanho — não depende de
-     transform-origin, clipping ou mask do CSS. */
-  const radarCanvas = document.querySelector('.radar-sweep-canvas');
-  if (radarCanvas) {
-    const ctx = radarCanvas.getContext('2d');
-    const beamWidth = (16 * Math.PI) / 180; // mesma largura do feixe anterior (16°)
-    const revolutionMs = 4000; // uma volta completa a cada 4s
-    let size = 0;
-
-    const resize = () => {
-      const rect = radarCanvas.getBoundingClientRect();
-      const dpr = window.devicePixelRatio || 1;
-      size = rect.width;
-      radarCanvas.width = Math.round(size * dpr);
-      radarCanvas.height = Math.round(size * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    };
-    resize();
-    window.addEventListener('resize', resize);
-
-    const drawFrame = (angle) => {
-      const centerX = size / 2;
-      const centerY = size / 2;
-      const radius = size / 2;
-      ctx.clearRect(0, 0, size, size);
-      ctx.save();
-      ctx.translate(centerX, centerY); // pivô fixo: sempre o centro exato do canvas
-      ctx.rotate(angle);
-
-      const steps = 28;
-      for (let i = 0; i < steps; i++) {
-        const t0 = i / steps;
-        const t1 = (i + 1) / steps;
-        const alpha = 0.5 * (1 - t0) ** 1.4;
-        ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.arc(0, 0, radius, -beamWidth * t0, -beamWidth * t1, true);
-        ctx.closePath();
-        ctx.fillStyle = `rgba(79,195,255,${alpha.toFixed(3)})`;
-        ctx.fill();
-      }
-      // linha de frente mais brilhante, como o "raio" do radar
-      ctx.beginPath();
-      ctx.moveTo(0, 0);
-      ctx.lineTo(radius * Math.cos(0), radius * Math.sin(0));
-      ctx.strokeStyle = 'rgba(200,235,255,.9)';
-      ctx.lineWidth = 1.5;
-      ctx.stroke();
-      ctx.restore();
-    };
-
-    if (reducedMotion) {
-      drawFrame(0);
-    } else {
-      let start = null;
-      const tick = (now) => {
-        if (start === null) start = now;
-        const elapsed = (now - start) % revolutionMs;
-        const angle = (elapsed / revolutionMs) * Math.PI * 2;
-        drawFrame(angle);
-        requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }
   }
 
   /* ---------- contador de visitas: contagem real vinda de /api/visits,

@@ -524,6 +524,10 @@ body {
 
 .feed-caption { padding: .3rem 1.1rem 1.3rem; }
 .feed-caption h3 { font-family: var(--display); text-transform: uppercase; font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+.product-card { display: flex; flex-direction: column; }
+.product-card .feed-caption { flex: 1; display: flex; flex-direction: column; }
+.product-card .feed-caption p { margin-bottom: 1.25rem; }
+.product-cta { margin-top: auto; width: 100%; justify-content: center; }
 .feed-caption p { color: var(--paper-dim); font-size: .87rem; }
 
 /* =========================================================
@@ -588,35 +592,33 @@ body {
 .coverage { padding-block: clamp(3rem, 5vw, 6rem); }
 .coverage-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; }
 .coverage-copy p { color: var(--paper-dim); margin-top: 1.1rem; max-width: 50ch; }
-.coverage-list { margin: 1.6rem 0 2rem; display: grid; gap: .7rem; }
-.coverage-list li { display: flex; align-items: center; gap: .7rem; font-weight: 600; }
+.coverage-copy .btn { margin-top: 2.2rem; }
 .coverage-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--chrome-dim); flex: none; }
 .coverage-dot--base { background: var(--ice); box-shadow: 0 0 8px 1px var(--ice); }
 .tag-base { font-size: .7rem; color: var(--ice); border: 1px solid var(--ice-dim); padding: .15em .5em; border-radius: 4px; margin-left: .3em; }
 
-.radar { position: relative; aspect-ratio: 1; width: min(420px, 100%); margin-inline: auto; }
-.radar-rings { position: absolute; inset: 0; border-radius: 50%; }
-.ring { position: absolute; inset: 0; margin: auto; border-radius: 50%; border: 1px solid rgba(79,195,255,.25); }
-.ring-1 { width: 100%; height: 100%; }
-.ring-2 { width: 68%; height: 68%; }
-.ring-3 { width: 36%; height: 36%; }
-.radar-core { position: absolute; inset: 0; margin: auto; width: 10px; height: 10px; border-radius: 50%; background: var(--ice); box-shadow: 0 0 16px 4px rgba(79,195,255,.7); z-index: 1; }
-/* feixe desenhado em <canvas> (js/main.js): o pivô é fixado a cada frame
-   via ctx.translate(centro) antes do ctx.rotate(), então não depende de
-   transform-origin/clip do CSS — elimina qualquer chance de o feixe
-   deslizar ou mudar de tamanho durante a rotação. */
-.radar-sweep-canvas {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  border-radius: 50%;
+.coverage-panel {
+  position: relative; padding: 1.8rem; border-radius: 18px;
+  background: linear-gradient(160deg, rgba(16,32,54,.7), rgba(8,18,32,.5));
+  border: 1px solid rgba(185,196,209,.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
 }
-.radar-tags { position: absolute; inset: 0; }
-.radar-tag {
-  position: absolute; left: var(--x); top: var(--y); transform: translate(-50%, -50%);
-  font-family: var(--mono); font-size: .72rem; letter-spacing: .04em; white-space: nowrap;
-  color: var(--paper); background: rgba(10,22,38,.85); border: 1px solid rgba(185,196,209,.25);
-  padding: .35em .6em; border-radius: 999px;
+.coverage-panel-label { display: block; color: var(--chrome-dim); font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 1.4rem; }
+.coverage-chips { list-style: none; display: flex; flex-wrap: wrap; gap: .7rem; }
+.coverage-chip {
+  display: inline-flex; align-items: center; gap: .6rem;
+  padding: .75rem 1.15rem; border-radius: 999px;
+  font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: .02em; text-transform: uppercase;
+  color: var(--paper); background: rgba(10,22,38,.7);
+  border: 1px solid rgba(185,196,209,.2);
+  transition: border-color .25s var(--ease), color .25s var(--ease);
 }
-.radar-coord { position: absolute; bottom: -2.2rem; left: 50%; transform: translateX(-50%); color: var(--chrome-dim); font-size: .72rem; white-space: nowrap; }
+.coverage-chip:hover { border-color: var(--ice); color: var(--ice); }
+.coverage-chip--base {
+  border-color: var(--ice-dim); color: var(--ice);
+  box-shadow: 0 0 0 1px rgba(79,195,255,.15), 0 0 28px -8px rgba(79,195,255,.55);
+}
+.coverage-chip .tag-base { margin-left: .2em; }
 
 /* =========================================================
    DEPOIMENTOS
@@ -692,6 +694,16 @@ a.trust-chip:hover { border-color: rgba(79,195,255,.45); transform: translateY(-
    CTA FINAL
    ========================================================= */
 .cta-final { padding-block: clamp(3.5rem, 6vw, 7rem); position: relative; overflow: hidden; }
+
+.profile, .catalog, .testimonials { background: var(--void); padding-inline: 1rem; }
+
+main > section:not(.hero) { position: relative; }
+main > section:not(.hero)::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--ice-dim) 20%, var(--ice) 50%, var(--ice-dim) 80%, transparent);
+  transform: scaleX(0); transition: transform 1.4s var(--ease); pointer-events: none;
+}
+main > section.is-in:not(.hero)::before { transform: scaleX(1); }
 .cta-final::before {
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 70% at 50% 100%, rgba(79,195,255,.14), transparent 65%);

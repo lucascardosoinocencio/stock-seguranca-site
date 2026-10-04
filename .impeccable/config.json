@@ -128,6 +128,15 @@
         ],
         "createdAt": "2026-09-30T00:31:51.837Z",
         "reason": "both flagged spans are short .eyebrow kicker labels (a bracket-tagged keyword list above the hero h1, and a short CTA tag above the final heading), not body paragraphs"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-04T22:45:36.248Z",
+        "reason": "false positive: sections get padding-block via their own rules and child .wrap is centered at min(1240px, 92vw); detector reads the section background without its padding"
       }
     ]
   }
